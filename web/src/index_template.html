@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">	
+<head>		
+	<meta charset="utf-8">
+	<title>parallelo3301.org giveaway</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="stylesheet" type="text/css" href="https://parallelo3301.org/style.css" />
+	<style>
+		.winners { margin-top: 30px; list-style-type: none; font-size: 25px; }
+		.winners li { display: inline; padding: 10px 20px;  }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header">
+			<img height="160" src="https://parallelo3301.org/avatar.png" />
+			
+			<br><br>
+			<script type="module">
+                import { createApp } from 'https://unpkg.com/petite-vue?module'
+              
+                createApp({
+				  winners: WINNERS_JSON,
+
+                  get getThm () { return this.winners.thm },
+                  get getHtb () { return this.winners.htb },
+				  get hasWinners () { return this.winners.thm.length }
+                }).mount()
+              </script>
+              
+              <div v-scope>
+				<h1 v-if="! hasWinners">No winners yet.</h1>
+				<div v-if="hasWinners">
+					<h1>TryHackMe 3x two-months subscription</h1>
+					<ul class="winners">
+						<li v-for="w of getThm" v-key="w.screen_name"><a :href="'https://twitter.com/' + w.screen_name" rel="noopener">@{{ w.screen_name }}</a></li>
+					</ul>
+
+					<br>
+
+					<h1 style="margin-top: 50px">HackTheBox 3x one-month VIP+</h1>
+					<ul class="winners">
+						<li v-for="w of getHtb" v-key="w.screen_name"><a :href="'https://twitter.com/' + w.screen_name" rel="noopener">@{{ w.screen_name }}</a></li>
+					</ul>
+
+					<br><br>
+					<h2 style="font-size: 30px">Congratulations!</h2>
+				</div>
+              </div>
+		</div>
+		<div id="footer">
+			<p class="space"><a href="https://github.com/parallelo3301/twitter-giveaway" target="_blank" rel="noopener">see the source code (GitHub)</a></p>
+			<br>
+			<p class="space"><a href="mailto:iam@parallelo3301.org">iam@parallelo3301.org</a></p>
+			<p><a href="/gpg.txt">GPG: 8B49 D1EB 2377 B91A B897  972D E280 6076 78D4 A60C</a></p>
+		</div>
+		<div>
+			<video width="400" class="phone-video" autoplay loop mutes playsinline>
+    				<source src="https://parallelo3301.org/real_world.mp4" type="video/mp4">
+			</video>
+		</div>
+	</div>
+</body>
+</html>
